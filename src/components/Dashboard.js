@@ -7,16 +7,16 @@ const REACT_APP_BACKEND_HOST = process.env.REACT_APP_BACKEND_HOST;
 
 const Dashboard = () => {
   const [nama, setNama] = useState('');
-  // const [token, setToken] = useState('');
+  const [token, setToken] = useState('');
   const [expire, setExpire] = useState('');
   // eslint-disable-next-line no-unused-vars
-  // const [users, setUsers] = useState([]);
+  const [users, setUsers] = useState([]);
 
   const navigate = useNavigate();
 
   useEffect(() => {
     refreshToken();
-    // getUsers();
+    getUsers();
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
@@ -37,7 +37,7 @@ const Dashboard = () => {
     if (expire * 1000 < currentDate.getTime()) {
       const response = await axios.get(`${REACT_APP_BACKEND_HOST}/auth/token`);
       config.headers.Authorization = `Bearer ${response.data.accessToken}`;
-      // setToken(response.data.accessToken);
+      setToken(response.data.accessToken);
       const decoded = jwt_decode(response.data.accessToken);
       setNama(decoded.nama);
       setExpire(decoded.exp);
@@ -48,19 +48,19 @@ const Dashboard = () => {
     return Promise.reject(error);
   });
 
-  // const getUsers = async () => {
-  //   const response = await axiosJWT.get(`${REACT_APP_BACKEND_HOST}/user`, {
-  //     headers: {
-  //       Authorization: `Bearer ${token}`
-  //     }
-  //   });
-  //   setUsers(response.data);
-  // }
+  const getUsers = async () => {
+    const response = await axiosJWT.get(`${REACT_APP_BACKEND_HOST}/user`, {
+      headers: {
+        Authorization: `Bearer ${token}`
+      }
+    });
+    setUsers(response.data);
+  }
 
   return (
     <div className="container is-fluid mt-5">
       <h1 className="title has-text-centered">Selamat datang {nama}</h1>
-      {/* <table className="table is-striped is-fullwidth">
+      <table className="table is-striped is-fullwidth">
         <thead>
           <tr>
             <th>No.</th>
@@ -77,7 +77,7 @@ const Dashboard = () => {
             </tr>
           ))}
         </tbody>
-      </table> */}
+      </table>
     </div>
   )
 }
