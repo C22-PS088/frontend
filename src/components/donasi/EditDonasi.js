@@ -55,7 +55,7 @@ const EditDonasi = () => {
     formData.append('data', JSON.stringify(dataDonasi));
 
     try {
-      await axios.put(`http://localREACT_APP_BACKEND_HOST:3001/donasi/${id}`, formData);
+      await axios.put(`${REACT_APP_BACKEND_HOST}/donasi/${id}`, formData);
       navigate("/donasi");
     } catch (error) {
       if (error.response) {
@@ -66,7 +66,7 @@ const EditDonasi = () => {
 
   const getDonasiById = async () => {
     try {
-      const response = await axios.get(`http://localREACT_APP_BACKEND_HOST:3001/donasi/${id}`);
+      const response = await axios.get(`${REACT_APP_BACKEND_HOST}/donasi/${id}`);
       setNama(response.data.nama);
       setDeskripsi(response.data.deskripsi);
       if (response.data.gambar) setGambarExist(response.data.gambar);
