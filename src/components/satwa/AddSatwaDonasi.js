@@ -7,8 +7,8 @@ const REACT_APP_BACKEND_HOST = process.env.REACT_APP_BACKEND_HOST;
 
 const AddSatwaDonasi = () => {
   const [nama_satwa, setNamaSatwa] = useState('');
-  let [SatwaId, setSatwaId] = useState('');
-  let [DonasiId, setDonasiId] = useState('');
+  const [SatwaId, setSatwaId] = useState('');
+  const [DonasiId, setDonasiId] = useState('');
   const [donasis, setDonasi] = useState([]);
   const [msg, setMsg] = useState('');
 
@@ -53,11 +53,9 @@ const AddSatwaDonasi = () => {
   const saveSatwaDonasi = async (e) => {
     e.preventDefault();
     try {
-      SatwaId = parseInt(SatwaId);
-      DonasiId = parseInt(DonasiId);
       await axios.post(`${REACT_APP_BACKEND_HOST}/satwa-donasi`, {
-        SatwaId,
-        DonasiId
+        SatwaId: parseInt(SatwaId),
+        DonasiId: parseInt(DonasiId)
       });
       navigate(`/satwa/donasi/${id}`);
     } catch (error) {

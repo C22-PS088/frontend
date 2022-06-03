@@ -7,7 +7,7 @@ const REACT_APP_BACKEND_HOST = process.env.REACT_APP_BACKEND_HOST;
 
 const AddSatwaGambar = () => {
   const [nama_satwa, setNamaSatwa] = useState('');
-  let [SatwaId, setSatwaId] = useState('');
+  const [SatwaId, setSatwaId] = useState('');
   const [gambar, setGambar] = useState('');
   const [msg, setMsg] = useState('');
 

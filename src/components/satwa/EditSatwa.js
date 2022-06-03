@@ -9,7 +9,7 @@ const EditSatwa = () => {
   const [nama, setNama] = useState('');
   const [nama_saintifik, setNamaSaintifik] = useState('');
   const [lokasi, setLokasi] = useState('');
-  let [populasi, setPopulasi] = useState('');
+  const [populasi, setPopulasi] = useState('');
   const [funfact, setFunfact] = useState('');
   const [msg, setMsg] = useState('');
 

@@ -126,25 +126,25 @@ const EditDonasi = () => {
               </div>
             </div>
             <div className="field">
-              <label className="label">Lokasi</label>
+              <label className="label">Lokasi (Opsional)</label>
               <div className="control">
                 <input type="text" className="input" placeholder="Lokasi" value={lokasi} onChange={(e) => setLokasi(e.target.value)} />
               </div>
             </div>
             <div className="field">
-              <label className="label">Kontak</label>
+              <label className="label">Kontak (Opsional)</label>
               <div className="control">
                 <input type="text" className="input" placeholder="Kontak" value={kontak} onChange={(e) => setKontak(e.target.value)} />
               </div>
             </div>
             <div className="field">
-              <label className="label">Website</label>
+              <label className="label">Website (Opsional)</label>
               <div className="control">
                 <input type="text" className="input" placeholder="Website" value={website} onChange={(e) => setWebsite(e.target.value)} />
               </div>
             </div>
             <div className="field">
-              <label className="label">Rekening</label>
+              <label className="label">Rekening (Opsional)</label>
               <div className="control">
                 <input type="text" className="input" placeholder="Rekening" value={rekening} onChange={(e) => setRekening(e.target.value)} />
               </div>
