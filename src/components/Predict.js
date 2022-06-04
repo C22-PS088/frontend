@@ -17,7 +17,7 @@ const Predict = () => {
 
     const formData = new FormData();
 
-    formData.append('gambar', gambar);
+    formData.append('file', gambar);
 
     try {
       const response = await axios.post(`${REACT_APP_BACKEND_HOST}/predict`, formData);
