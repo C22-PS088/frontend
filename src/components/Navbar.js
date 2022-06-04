@@ -19,6 +19,10 @@ const Navbar = () => {
     }
   }
 
+  const Predict = () => {
+    navigate("/predict");
+  }
+
   return (
     <nav className="navbar is-dark" role="navigation" aria-label="main navigation">
       <div className="container">
@@ -52,6 +56,9 @@ const Navbar = () => {
           <div className="navbar-end">
             <div className="navbar-item">
               <div className="buttons">
+                <button onClick={Predict} className="button is-link">
+                  Predict
+                </button>
                 <button onClick={Logout} className="button is-light">
                   Logout
                 </button>
