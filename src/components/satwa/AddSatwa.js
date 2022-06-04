@@ -83,9 +83,9 @@ const AddSatwa = () => {
               </div>
             </div>
             <div className="field">
-              <label className="label">Funfact (Opsional)</label>
+              <label className="label">Fun Facts (Opsional)</label>
               <div className="control">
-                <textarea type="text" className="textarea" placeholder="Funfact" value={funfact} onChange={(e) => setFunfact(e.target.value)} ></textarea>
+                <textarea type="text" className="textarea" placeholder="Fun Facts" value={funfact} onChange={(e) => setFunfact(e.target.value)} ></textarea>
               </div>
             </div>
             <div className="field">

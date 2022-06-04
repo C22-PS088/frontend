@@ -12,6 +12,7 @@ import AddSatwaGambar from "./components/satwa/AddSatwaGambar";
 import DonasiList from "./components/donasi/DonasiList";
 import AddDonasi from "./components/donasi/AddDonasi";
 import EditDonasi from "./components/donasi/EditDonasi";
+import Predict from "./components/Predict";
 
 function App() {
   return (
@@ -29,6 +30,7 @@ function App() {
         <Route path="/donasi" element={<><Navbar /><DonasiList /></>} />
         <Route path="/donasi/tambah" element={<><Navbar /><AddDonasi /></>} />
         <Route path="/donasi/edit/:id" element={<><Navbar /><EditDonasi /></>} />
+        <Route path="/predict" element={<Predict />} />
       </Routes>
     </BrowserRouter >
   );
