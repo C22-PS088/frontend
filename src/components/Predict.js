@@ -74,11 +74,11 @@ const Predict = () => {
       <hr />
       <div className="columns mt-5 is-centered">
         <div className="column is-half">
-          <h2 className="title has-text-centered">Nama: {nama}</h2>
-          <h2 className="title has-text-centered">Nama Saintifik: {nama_saintifik}</h2>
-          <h2 className="title has-text-centered">Lokasi: {lokasi}</h2>
-          <h2 className="title has-text-centered">Populasi: {populasi}</h2>
-          <h2 className="title has-text-centered">Fun Facts: {funfact}</h2>
+          <p>Nama: {nama}</p>
+          <p>Nama Saintifik: {nama_saintifik}</p>
+          <p>Lokasi: {lokasi}</p>
+          <p>Populasi: {populasi}</p>
+          <p>Fun Facts: {funfact}</p>
         </div>
       </div>
     </div>
