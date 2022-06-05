@@ -8,6 +8,8 @@ const REACT_APP_BACKEND_HOST = process.env.REACT_APP_BACKEND_HOST;
 const EditDonasi = () => {
   const [nama, setNama] = useState('');
   const [deskripsi, setDeskripsi] = useState('');
+  const [logo, setLogo] = useState('');
+  const [logo_exist, setLogoExist] = useState('');
   const [gambar, setGambar] = useState('');
   const [gambar_exist, setGambarExist] = useState('');
   const [lokasi, setLokasi] = useState('');
@@ -41,6 +43,7 @@ const EditDonasi = () => {
 
     const formData = new FormData();
 
+    formData.append('logo', logo);
     formData.append('gambar', gambar);
 
     let dataDonasi = {
@@ -69,6 +72,7 @@ const EditDonasi = () => {
       const response = await axios.get(`${REACT_APP_BACKEND_HOST}/donasi/${id}`);
       setNama(response.data.nama);
       setDeskripsi(response.data.deskripsi);
+      if (response.data.logo) setLogoExist(response.data.logo);
       if (response.data.gambar) setGambarExist(response.data.gambar);
       setLokasi(response.data.lokasi);
       setKontak(response.data.kontak);
@@ -103,6 +107,28 @@ const EditDonasi = () => {
                 <textarea className="textarea" placeholder="Deskripsi" value={deskripsi} onChange={(e) => setDeskripsi(e.target.value)}></textarea>
               </div>
             </div>
+            {logo_exist ? (
+              <figure className="image is-horizontal-center"><img style={{ width: '200px' }} src={logo_exist} alt={nama} /></figure>
+            ) : ('')}
+            <div className="field">
+              <label className="label">Logo (Opsional)</label>
+              <div className="control">
+                <div className="file has-name">
+                  <label className="file-label">
+                    <input className="file-input" type="file" onChange={(e) => setLogo(e.target.files[0])} />
+                    <span className="file-cta">
+                      <span className="file-icon">
+                        <i className="fa fa-upload"></i>
+                      </span>
+                      <span className="file-label">
+                        Pilih file…
+                      </span>
+                    </span>
+                    <span className="file-name">{(logo.name || 'Belum dipilih')}</span>
+                  </label>
+                </div>
+              </div>
+            </div>
             {gambar_exist ? (
               <figure className="image is-horizontal-center"><img style={{ width: '200px' }} src={gambar_exist} alt={nama} /></figure>
             ) : ('')}
@@ -111,7 +137,7 @@ const EditDonasi = () => {
               <div className="control">
                 <div className="file has-name">
                   <label className="file-label">
-                    <input className="file-input" type="file" name="resume" onChange={(e) => setGambar(e.target.files[0])} />
+                    <input className="file-input" type="file" onChange={(e) => setGambar(e.target.files[0])} />
                     <span className="file-cta">
                       <span className="file-icon">
                         <i className="fa fa-upload"></i>

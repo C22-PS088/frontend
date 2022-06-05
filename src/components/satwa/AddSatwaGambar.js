@@ -82,7 +82,7 @@ const AddSatwaGambar = () => {
               <div className="control">
                 <div className="file has-name">
                   <label className="file-label">
-                    <input className="file-input" type="file" name="resume" onChange={(e) => setGambar(e.target.files[0])} />
+                    <input className="file-input" type="file" onChange={(e) => setGambar(e.target.files[0])} />
                     <span className="file-cta">
                       <span className="file-icon">
                         <i className="fa fa-upload"></i>

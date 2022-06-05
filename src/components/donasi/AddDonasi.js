@@ -8,6 +8,7 @@ const REACT_APP_BACKEND_HOST = process.env.REACT_APP_BACKEND_HOST;
 const AddDonasi = () => {
   const [nama, setNama] = useState('');
   const [deskripsi, setDeskripsi] = useState('');
+  const [logo, setLogo] = useState('');
   const [gambar, setGambar] = useState('');
   const [lokasi, setLokasi] = useState('');
   const [kontak, setKontak] = useState('');
@@ -37,6 +38,7 @@ const AddDonasi = () => {
 
     const formData = new FormData();
 
+    formData.append('logo', logo);
     formData.append('gambar', gambar);
 
     let dataDonasi = {
@@ -83,11 +85,30 @@ const AddDonasi = () => {
               </div>
             </div>
             <div className="field">
+              <label className="label">Logo (Opsional)</label>
+              <div className="control">
+                <div className="file has-name">
+                  <label className="file-label">
+                    <input className="file-input" type="file" onChange={(e) => setLogo(e.target.files[0])} />
+                    <span className="file-cta">
+                      <span className="file-icon">
+                        <i className="fa fa-upload"></i>
+                      </span>
+                      <span className="file-label">
+                        Pilih file…
+                      </span>
+                    </span>
+                    <span className="file-name">{(logo.name || 'Belum dipilih')}</span>
+                  </label>
+                </div>
+              </div>
+            </div>
+            <div className="field">
               <label className="label">Gambar (Opsional)</label>
               <div className="control">
                 <div className="file has-name">
                   <label className="file-label">
-                    <input className="file-input" type="file" name="resume" onChange={(e) => setGambar(e.target.files[0])} />
+                    <input className="file-input" type="file" onChange={(e) => setGambar(e.target.files[0])} />
                     <span className="file-cta">
                       <span className="file-icon">
                         <i className="fa fa-upload"></i>
