@@ -3,7 +3,7 @@
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Frontend service:
-This is a Javascript code built using Node.js, so make sure you have Node.js installed on your system.
+This is a JavaScript code built using Node.js, so make sure you have Node.js installed on your system.
 
 1. Clone the repository then open it using your code editor.
 2. Supposedly you have done the steps from the [backend](https://github.com/C22-PS088/backend) repository, you can continue these steps. If not, check the [backend](https://github.com/C22-PS088/backend) repository and finish the steps there first (otherwise you can't complete these steps).
