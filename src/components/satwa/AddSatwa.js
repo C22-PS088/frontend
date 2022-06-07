@@ -9,6 +9,7 @@ const AddSatwa = () => {
   const [nama, setNama] = useState('');
   const [nama_saintifik, setNamaSaintifik] = useState('');
   const [lokasi, setLokasi] = useState('');
+  const [gambar_lokasi, setGambarLokasi] = useState('');
   const [populasi, setPopulasi] = useState('');
   const [funfact, setFunfact] = useState('');
   const [msg, setMsg] = useState('');
@@ -32,14 +33,23 @@ const AddSatwa = () => {
 
   const saveSatwa = async (e) => {
     e.preventDefault();
+
+    const formData = new FormData();
+
+    formData.append('gambar_lokasi', gambar_lokasi);
+
+    let dataSatwa = {
+      nama: nama,
+      nama_saintifik: nama_saintifik,
+      lokasi: lokasi,
+      populasi: populasi,
+      funfact: funfact
+    };
+
+    formData.append('data', JSON.stringify(dataSatwa));
+
     try {
-      await axios.post(`${REACT_APP_BACKEND_HOST}/satwa`, {
-        nama,
-        nama_saintifik,
-        lokasi,
-        populasi,
-        funfact
-      });
+      await axios.post(`${REACT_APP_BACKEND_HOST}/satwa`, formData);
       navigate("/satwa");
     } catch (error) {
       if (error.response) {
@@ -56,7 +66,7 @@ const AddSatwa = () => {
       <div className="columns mt-5 is-centered">
         <div className="column is-half">
           <h1 className="title has-text-centered">Data Satwa</h1>
-          <form onSubmit={saveSatwa}>
+          <form encType="multipart/form-data" onSubmit={saveSatwa}>
             <p className="has-text-centered">{msg}</p>
             <div className="field">
               <label className="label">Nama</label>
@@ -74,6 +84,25 @@ const AddSatwa = () => {
               <label className="label">Lokasi (Opsional)</label>
               <div className="control">
                 <input type="text" className="input" placeholder="Lokasi" value={lokasi} onChange={(e) => setLokasi(e.target.value)} />
+              </div>
+            </div>
+            <div className="field">
+              <label className="label">Gambar Lokasi (Opsional)</label>
+              <div className="control">
+                <div className="file has-name">
+                  <label className="file-label">
+                    <input className="file-input" type="file" onChange={(e) => setGambarLokasi(e.target.files[0])} />
+                    <span className="file-cta">
+                      <span className="file-icon">
+                        <i className="fa fa-upload"></i>
+                      </span>
+                      <span className="file-label">
+                        Pilih file…
+                      </span>
+                    </span>
+                    <span className="file-name">{(gambar_lokasi.name || 'Belum dipilih')}</span>
+                  </label>
+                </div>
               </div>
             </div>
             <div className="field">
